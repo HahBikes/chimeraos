@@ -40,10 +40,12 @@ export PACKAGES="\
 	gnome-control-center \
 	gnome-disk-utility \
 	gnome-keyring \
+	gnome-remote-desktop \
 	gnome-session \
 	gnome-shell \
 	gnome-software \
 	gnome-text-editor \
+	gnome-tweaks \
 	gst-plugin-pipewire \
 	haveged \
 	htop \
@@ -59,8 +61,6 @@ export PACKAGES="\
 	lib32-libnm \
 	lib32-libxinerama \
 	lib32-libxcrypt-compat \
-	lib32-libva \
-	lib32-libva-intel-driver \
 	lib32-libva-vdpau-driver \
 	lib32-nvidia-utils \
 	lib32-openal \
@@ -86,7 +86,6 @@ export PACKAGES="\
 	libretro-picodrive \
 	libretro-ppsspp \
 	libretro-snes9x \
-	libva-intel-driver \
 	libva-vdpau-driver \
 	libxcrypt-compat \
 	lightdm \
@@ -100,9 +99,6 @@ export PACKAGES="\
 	networkmanager \
 	nfs-utils \
 	nss-mdns \
-	nvidia-dkms \
-	nvidia-prime \
-	nvidia-utils \
 	openal \
 	openssh \
 	pipewire \
@@ -155,6 +151,7 @@ export AUR_PACKAGES="\
 	libretro-prosystem-git \
 	libretro-stella2014-git \
 	libretro-virtualjaguar-git \
+	ludusavi \
 	nintendo-udev \
 	oxp-platform-dkms-git \
 	python-vdf \
@@ -247,10 +244,12 @@ postinstallhook() {
 	grep -v org.gnome.Console.desktop | \
 	grep -v org.gnome.DiskUtility.desktop | \
 	grep -v org.gnome.FileRoller.desktop | \
+	grep -v ludusavi.desktop | \
 	grep -v org.gnome.Nautilus.desktop | \
 	grep -v org.gnome.Settings.desktop | \
 	grep -v org.gnome.Software.desktop | \
 	grep -v org.gnome.TextEditor.desktop | \
+	grep -v org.gnome.tweaks.desktop | \
 	grep -v steam.desktop | \
 	xargs -I {} sh -c "echo NoDisplay=true >> {}"
 

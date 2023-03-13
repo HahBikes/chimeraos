@@ -33,6 +33,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/mangohud"
+
+  patch -Np1 -i ../../0001-aokzoe.patch
+  
   git submodule init
   git config submodule.modules/minhook.url "$srcdir/mangohud-minhook"
   git -c protocol.file.allow=always submodule update
