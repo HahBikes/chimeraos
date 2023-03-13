@@ -1,0 +1,12 @@
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index 9b2805a..d96b7a0 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -227,7 +227,7 @@ static bool render(GLFWwindow* window) {
+     position_layer(sw_stats, params, window_size);
+     render_imgui(sw_stats, params, window_size, true);
+     overlay_end_frame();
+-    glfwSetWindowSize(window, 1280, 800);
++    glfwSetWindowSize(window, 1920, 1200);
+     ImGui::EndFrame();
+     return last_window_size.x != window_size.x || last_window_size.y != window_size.y;
