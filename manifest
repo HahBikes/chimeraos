@@ -17,6 +17,7 @@ export PACKAGES="\
 	alsa-firmware \
 	alsa-utils \
 	amd-ucode \
+	base-devel \
 	bluez \
 	bluez-hid2hci \
 	bluez-plugins \
@@ -47,6 +48,7 @@ export PACKAGES="\
 	gnome-shell \
 	gnome-software \
 	gnome-text-editor \
+	gnome-tweaks \
 	gst-plugin-pipewire \
 	haveged \
 	htop \
@@ -64,6 +66,7 @@ export PACKAGES="\
 	lib32-libxinerama \
 	lib32-libxcrypt-compat \
 	lib32-libva-intel-driver \
+	lib32-libva-mesa-driver \
 	lib32-libva-vdpau-driver \
 	lib32-nvidia-utils \
 	lib32-openal \
@@ -90,6 +93,7 @@ export PACKAGES="\
 	libretro-ppsspp \
 	libretro-snes9x \
 	libva-intel-driver \
+	libva-mesa-driver \
 	libva-vdpau-driver \
 	libxcrypt-compat \
 	libxss \
@@ -104,9 +108,6 @@ export PACKAGES="\
 	networkmanager \
 	nfs-utils \
 	nss-mdns \
-	nvidia-dkms \
-	nvidia-prime \
-	nvidia-utils \
 	openal \
 	openssh \
 	pipewire \
@@ -174,7 +175,6 @@ export AUR_PACKAGES="\
 	frzr \
 	gamescope-plus \
 	gamescope-session-git \
-	handygccs-git \
 	hhfc-git \
 	legendary \
 	lib32-gamescope-plus \
@@ -183,6 +183,7 @@ export AUR_PACKAGES="\
 	libretro-prosystem-git \
 	libretro-stella2014-git \
 	libretro-virtualjaguar-git \
+	ludusavi \
 	nintendo-udev \
 	opengamepadui-bin \
 	opengamepadui-session-git \
@@ -203,6 +204,7 @@ export AUR_PACKAGES="\
 	wyvern \
 	xpad-noone-dkms \
 	xpadneo-dkms \
+	yay \
 "
 
 export SERVICES="\
@@ -280,10 +282,12 @@ postinstallhook() {
 	grep -v org.gnome.Console.desktop | \
 	grep -v org.gnome.DiskUtility.desktop | \
 	grep -v org.gnome.FileRoller.desktop | \
+	grep -v ludusavi.desktop | \
 	grep -v org.gnome.Nautilus.desktop | \
 	grep -v org.gnome.Settings.desktop | \
 	grep -v org.gnome.Software.desktop | \
 	grep -v org.gnome.TextEditor.desktop | \
+	grep -v org.gnome.tweaks.desktop | \
 	grep -v steam.desktop | \
 	xargs -I {} sh -c "echo NoDisplay=true >> {}"
 

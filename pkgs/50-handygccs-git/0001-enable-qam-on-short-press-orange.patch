@@ -1,0 +1,51 @@
+From 0794c75f5fb325d8ae97fb9b846378b9c5c6426e Mon Sep 17 00:00:00 2001
+From: Fabiano Honorato <fabianoshz@gmail.com>
+Date: Fri, 12 May 2023 18:02:53 -0300
+Subject: [PATCH] Enable qam on short press orange
+
+---
+ usr/share/handygccs/scripts/handycon.py | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/usr/share/handygccs/scripts/handycon.py b/usr/share/handygccs/scripts/handycon.py
+index 73aac47..f8d92ba 100755
+--- a/usr/share/handygccs/scripts/handycon.py
++++ b/usr/share/handygccs/scripts/handycon.py
+@@ -733,12 +733,18 @@ async def capture_keyboard_events():
+                                 event_queue.remove(button6)
+                                 await toggle_performance()
+ 
+-                            # BUTTON 2 (Default: MODE) Short press orange
++                            # BUTTON 2 (Default: MODE) Long press orange
+                             if active == [34, 125] and button_on == 1 and button2 not in event_queue:
+                                 event_queue.append(button2)
+                             elif active == [] and seed_event.code in [34, 125] and button_on == 0 and button2 in event_queue:
+                                 this_button = button2
+ 
++                            # BUTTON 2 (Default: MODE) Turbo
++                            if active == [3, 97] and button_on == 1 and button2 not in event_queue:
++                                event_queue.append(button2)
++                            elif active == [] and seed_event.code in [3, 97] and button_on == 0 and button2 in event_queue:
++                                this_button = button2
++
+                             # BUTTON 3 (Default: Toggle Gyro) Short press orange + KB
+                             if active == [97, 100, 111] and button_on == 1 and button3 not in event_queue and gyro_device:
+                                 event_queue.append(button3)
+@@ -758,7 +764,13 @@ async def capture_keyboard_events():
+                             elif active == [] and seed_event.code in [24, 97, 125] and button_on == 0 and button4 in event_queue:
+                                 this_button = button4
+ 
+-                            # BUTTON 5 (Default: QAM) Long press orange
++                            # BUTTON 5 (Default: MODE) Orange
++                            if active == [125] and button_on == 1 and button5 not in event_queue:
++                                event_queue.append(button5)
++                            elif active == [] and seed_event.code in [125] and button_on == 0 and button5 in event_queue:
++                                this_button = button5
++
++                            # BUTTON 5 (Default: QAM) Short press orange
+                             if active == [32, 125] and button_on == 1 and button5 not in event_queue:
+                                 event_queue.append(button5)
+                             elif active == [] and seed_event.code in [32, 125] and button_on == 0 and button5 in event_queue:
+-- 
+2.40.1
+
