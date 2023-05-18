@@ -1,3 +1,4 @@
-DO NOT DOWNLOAD DIRECTLY FROM THE RELEASES PAGE. THIS IS NOT INSTALLATION MEDIA. FOLLOW THE LINK BELOW FOR DOWNLOAD AND INSTALLATION INSTRUCTIONS.
+This is a fork of chimeraOS containing specific tweaks for the AOKZOE A1 
+(Credits to Fabianoshz/chimeraos fork of ChimeraOS for the changes)
 
 [ChimeraOS website](https://chimeraos.org)
