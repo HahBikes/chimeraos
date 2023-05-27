@@ -68,6 +68,7 @@ export PACKAGES="\
 	lib32-libxcrypt-compat \
 	lib32-libva-mesa-driver \
 	lib32-libva-vdpau-driver \
+	lib32-mesa \
 	lib32-mesa-vdpau \
 	lib32-nvidia-utils \
 	lib32-openal \
@@ -97,11 +98,13 @@ export PACKAGES="\
 	libva-mesa-driver \
 	libva-vdpau-driver \
 	libxcrypt-compat \
+	libxss \
 	lightdm \
 	linux-firmware \
 	liquidctl \
 	logrotate \
 	lshw \
+	mesa \
 	mesa-demos \
 	mesa-vdpau \
 	nano \
@@ -146,8 +149,6 @@ export PACKAGES="\
 "
 
 export PACKAGE_OVERRIDES="\
-	https://archive.archlinux.org/packages/m/mesa/mesa-23.0.2-2-x86_64.pkg.tar.zst \
-	https://archive.archlinux.org/packages/l/lib32-mesa/lib32-mesa-23.0.2-2-x86_64.pkg.tar.zst \
 	https://archive.archlinux.org/packages/w/wayland/wayland-1.21.0-2-x86_64.pkg.tar.zst \
 "
 
