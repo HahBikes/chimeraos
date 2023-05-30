@@ -137,6 +137,7 @@ export PACKAGES="\
 	vulkan-icd-loader \
 	vulkan-radeon \
 	wavpack \
+	wget \
 	which \
 	wireplumber \
 	wqy-zenhei \
