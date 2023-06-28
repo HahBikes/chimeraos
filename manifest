@@ -10,7 +10,8 @@ export WEBSITE="https://chimeraos.org"
 export DOCUMENTATION_URL="https://chimeraos.org/about"
 export BUG_REPORT_URL="https://github.com/ChimeraOS/chimeraos/issues"
 
-export KERNEL_PACKAGE="linux"
+export KERNEL_PACKAGE="linux-chimeraos"
+export KERNEL_PACKAGE_ORIGIN="local"
 
 export PACKAGES="\
 	accountsservice \
@@ -31,6 +32,7 @@ export PACKAGES="\
 	eog \
 	epiphany \
 	ethtool \
+	evtest \
 	ffmpeg \
 	file-roller \
 	firejail \
@@ -53,7 +55,6 @@ export PACKAGES="\
 	gst-plugin-pipewire \
 	haveged \
 	htop \
-	iio-sensor-proxy \
 	intel-gpu-tools \
 	intel-media-driver \
 	intel-ucode \
@@ -152,10 +153,13 @@ export PACKAGES="\
 "
 
 export PACKAGE_OVERRIDES="\
+	https://github.com/ChimeraOS/linux-chimeraos/releases/download/v6.3.9-chos2/linux-chimeraos-6.3.9.chos2-1-x86_64.pkg.tar.zst \
+	https://github.com/ChimeraOS/linux-chimeraos/releases/download/v6.3.9-chos2/linux-chimeraos-headers-6.3.9.chos2-1-x86_64.pkg.tar.zst \
 "
 
 export AUR_PACKAGES="\
 	ayaled \
+	asus-cirrus-firmware-git \
 	bcm20702a1-firmware \
 	boxtron \
 	chimera \

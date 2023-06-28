@@ -87,7 +87,12 @@ locale-gen
 pacman --noconfirm -Syy
 
 # install kernel package
-pacman --noconfirm -S "${KERNEL_PACKAGE}" "${KERNEL_PACKAGE}-headers"
+if [ "$KERNEL_PACKAGE_ORIGIN" == "local" ] ; then
+	pacman --noconfirm -U --overwrite '*' \
+	/extra_pkgs/${KERNEL_PACKAGE}-*.pkg.tar.zst 
+else
+	pacman --noconfirm -S "${KERNEL_PACKAGE}" "${KERNEL_PACKAGE}-headers"
+fi
 
 # install own override packages
 pacman --noconfirm -U --overwrite '*' /own_pkgs/*
