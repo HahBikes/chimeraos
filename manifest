@@ -71,9 +71,7 @@ export PACKAGES="\
 	lib32-libva-vdpau-driver \
 	lib32-mesa \
 	lib32-mesa-vdpau \
-	lib32-nvidia-utils \
 	lib32-openal \
-	lib32-pipewire \
 	lib32-systemd \
 	lib32-vulkan-icd-loader \
 	lib32-vulkan-intel \
@@ -93,7 +91,6 @@ export PACKAGES="\
 	libretro-mgba \
 	libretro-mupen64plus-next \
 	libretro-nestopia \
-	libretro-pcsx2 \
 	libretro-picodrive \
 	libretro-ppsspp \
 	libretro-snes9x \
@@ -102,7 +99,6 @@ export PACKAGES="\
 	libxcrypt-compat \
 	libxss \
 	lightdm \
-	linux-firmware \
 	liquidctl \
 	logrotate \
 	lshw \
@@ -116,10 +112,6 @@ export PACKAGES="\
 	nss-mdns \
 	openal \
 	openssh \
-	pipewire \
-	pipewire-alsa \
-	pipewire-jack \
-	pipewire-pulse \
 	podman \
 	pulsemixer \
 	python \
@@ -155,11 +147,15 @@ export PACKAGES="\
 export PACKAGE_OVERRIDES="\
 	https://github.com/ChimeraOS/linux-chimeraos/releases/download/v6.3.9-chos2/linux-chimeraos-6.3.9.chos2-1-x86_64.pkg.tar.zst \
 	https://github.com/ChimeraOS/linux-chimeraos/releases/download/v6.3.9-chos2/linux-chimeraos-headers-6.3.9.chos2-1-x86_64.pkg.tar.zst \
+	https://archive.archlinux.org/repos/2023/06/28/extra/os/x86_64/libretro-pcsx2-11900-2-x86_64.pkg.tar.zst \
+	https://archive.archlinux.org/repos/2023/06/07/extra/os/x86_64/nvidia-dkms-530.41.03-1-x86_64.pkg.tar.zst \
+	https://archive.archlinux.org/repos/2023/06/07/extra/os/x86_64/nvidia-utils-530.41.03-1-x86_64.pkg.tar.zst \
+	https://archive.archlinux.org/repos/2023/06/07/multilib/os/x86_64/lib32-nvidia-utils-530.41.03-1-x86_64.pkg.tar.zst \
+	https://archive.archlinux.org/repos/2023/06/07/extra/os/x86_64/nvidia-prime-1.0-4-any.pkg.tar.zst \
 "
 
 export AUR_PACKAGES="\
 	ayaled \
-	asus-cirrus-firmware-git \
 	bcm20702a1-firmware \
 	boxtron \
 	chimera \
