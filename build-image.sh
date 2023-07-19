@@ -50,6 +50,10 @@ btrfs subvolume create ${BUILD_PATH}
 # bootstrap using our configuration
 pacstrap -K -C rootfs/etc/pacman.conf ${BUILD_PATH}
 
+# copy the builder mirror list into chroot
+mkdir -p rootfs/etc/pacman.d
+cp /etc/pacman.d/mirrorlist rootfs/etc/pacman.d/mirrorlist
+
 # copy files into chroot
 cp -R manifest rootfs/. ${BUILD_PATH}/
 
@@ -57,11 +61,11 @@ mkdir ${BUILD_PATH}/own_pkgs
 mkdir ${BUILD_PATH}/extra_pkgs
 
 cp -rv aur-pkgs/*.pkg.tar* ${BUILD_PATH}/extra_pkgs
-# Own packages already exist in docker container
-cp -rv /pkgs/*.pkg.tar* ${BUILD_PATH}/own_pkgs
+cp -rv pkgs/*.pkg.tar* ${BUILD_PATH}/own_pkgs
 
 if [ -n "${PACKAGE_OVERRIDES}" ]; then
-	cp -rv /tmp/extra_pkgs/*.pkg.tar* ${BUILD_PATH}/extra_pkgs
+	wget --directory-prefix=/tmp/extra_pkgs ${PACKAGE_OVERRIDES}
+	cp -rv /tmp/extra_pkgs/*.pkg.tar* ${BUILD_PATH}/own_pkgs
 fi
 
 
@@ -78,12 +82,19 @@ pacman-key --populate
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen
 
+# Disable parallel downloads
+sed -i '/ParallelDownloads/s/^/#/g' /etc/pacman.conf
 
 # update package databases
 pacman --noconfirm -Syy
 
 # install kernel package
-pacman --noconfirm -S "${KERNEL_PACKAGE}" "${KERNEL_PACKAGE}-headers"
+if [ "$KERNEL_PACKAGE_ORIGIN" == "local" ] ; then
+	pacman --noconfirm -U --overwrite '*' \
+	/own_pkgs/${KERNEL_PACKAGE}-*.pkg.tar.zst 
+else
+	pacman --noconfirm -S "${KERNEL_PACKAGE}" "${KERNEL_PACKAGE}-headers"
+fi
 
 # install own override packages
 pacman --noconfirm -U --overwrite '*' /own_pkgs/*
